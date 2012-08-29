@@ -15,7 +15,7 @@ function getFileName() {
 }
 
 function getTimeNow() {
-	return new Date().getUTCDate();
+	return new Date().toUTCString();
 }
 
 function getOutputDir() {
@@ -32,7 +32,7 @@ function createServer(port) {
 		filePathBase = buildFilePathBase(port, getFileName());
 		var dataStream = fs.createWriteStream(filePathBase + '.data');
 		var metaStream = fs.createWriteStream(filePathBase + '.meta');
-		metaStream.write(getTimeNow() + " socket connected");
+		metaStream.write(getTimeNow() + ' IP ' + socket.remoteAddress + ' socket connected\n');
 		
 		console.log('new connection\n');
 
